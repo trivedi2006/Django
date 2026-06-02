@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block title %}
+    <title>nav</title>
+    {% endblock title %}
+  </head>
+  <body>
+    <nav>
+      <a href="{% url  'Home' %}">Home</a>
+      <a href="{% url  'About' %}">About</a>
+      <a href="{% url  'Nav' %}">Nav</a>
+    </nav>
+    <h1>Student List</h1>
+    <form action="{% url 'Nav' %}" method="get">
+        <input type="text" name="search" placeholder="student name" value="{{request.GET.Search}}">
+        <Button type="submit">Search</Button>
+    </form>
+    <!-- {% if s > 9 %}
+    <h1>Good</h1>
+    {% elif s > 7 %}
+    <h2>Very Good</h2>
+    {% else %}
+    <h3>Very Very Good</h3>
+    {% endif %}
+    <ul>
+      {% for i in l %}
+      <li>{{i}}</li>
+      {% endfor %}
+    </ul>
+
+
+    {% for i in d %} 
+        {{i}}
+    {% endfor %}
+
+<br>
+    {% for i,j in d.items %}
+         {{i}},{{j}} 
+         
+    {%endfor %} 
+    <br>
+    {{n}} {{s}}  -->
+    <table cellpadding="10" border="2px solid black">
+    
+        <tr>
+            <th>Name</th>
+            <th>Roll</th>
+            <th>Mark</th>
+        <tr>
+        {% for stu in students %}
+        <tr>
+            <th>{{stu.name}}</th>
+            <th>{{stu.roll}}</th>
+            <th>{{stu.mark}}</th>
+        </tr>
+        
+    {% endfor %}
+    </table>
+    {% block body %}
+    <h1>Nav Bar page</h1>
+    {% endblock body %} {% block con %} {% endblock con %}
+  </body>
+</html>
+<!-- create user python manage.py createsuperuser -->
